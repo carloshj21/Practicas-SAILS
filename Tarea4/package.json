@@ -1,0 +1,16 @@
+{
+  "name": "node-2017",
+  "version": "1.0.0",
+  "description": "Tarea4",
+  "main": "Tarea4.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "CarlosHJ",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.4.1",
+    "bluebird": "^3.5.0",
+    "debug": "^2.6.8"
+  }
+}
