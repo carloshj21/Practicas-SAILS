@@ -16,12 +16,10 @@ function hour(time, timess, cb){
 	t = time;
 	setTimeout(function(){
 		tim=Date.now();
-		if(tim%2 == 0)
-		{
+		if(tim%2 == 0){
 			timess=tim;
 		}
-		else
-		{
+		else{
 			timess="(:";
 		}
 		console.log(timess);
@@ -48,7 +46,7 @@ async.waterfall([
 			console.log(num3);
 			console.log('---------------');
 		}
-});
+	});
 async.waterfall([
 	declaration2,
 	hour,
@@ -66,4 +64,4 @@ async.waterfall([
 		else{
 			return;
 		}
-});
+	});
