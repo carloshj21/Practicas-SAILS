@@ -30,17 +30,15 @@ function hour(time, timess, cb){
 //Bluebird
 let a = Promise.promisify(declaration),
 	b = Promise.promisify(fibonacci3);
-	//c = Promise.promisify(declaration2);
-  //d = Promise.promisify(hour);
 
-  let p = a()
-  	.then((ant2, ant1) => {
-      return b(ant2, ant1);
-  	})
-    .then((ant1, num3) => {
-      console.log(num3);
-			console.log('---------------');
-    })
-  	.catch((err) => {
-  		console.log("Error");
-  	});
+let p = a()
+  .then((ant2, ant1) => {
+    return b(ant2, ant1);
+  })
+  .then((ant1, num3) => {
+    console.log(num3);
+		console.log('---------------');
+  })
+  .catch((err) => {
+  	console.log("Error");
+  });
