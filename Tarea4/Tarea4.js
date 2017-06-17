@@ -1,12 +1,19 @@
 const async = require('async');
-//const debug = require('debug');
-//const error = debug('index:error');
 
 function declaration(cb){
-		cb(1000, 0);
+	cb(null, 0, 1);
 }
 
-function hour(err, time, timess, cb){
+/*function declaration2(cb){
+	cb(null, 1000, 0);
+*/
+
+function fibonacci3(ant2, ant1, cb){
+	num3 = ant2+ant1;
+	return cb(null, ant1, num3);
+}
+
+function hour(time, timess, cb){
 	t = time;
 	setTimeout(function(){
 		tim=Date.now();
@@ -22,15 +29,26 @@ function hour(err, time, timess, cb){
 		return cb(null, t, timess);
 	}, t);
 	t=time+1000;
-  cb();
 }
 
 async.waterfall([
 	declaration,
-  hour
-], (err, t, timess, cb) => {
-  if(err){
-    error('Oh no!');
-  }
-  console.log("Hola");
+	fibonacci3,
+	fibonacci3,
+	fibonacci3,
+	fibonacci3,
+	fibonacci3,
+	fibonacci3,
+	fibonacci3,
+	fibonacci3,
+	//declaration2,
+	//hour,
+	], (err, cb) => {
+		if(err){
+			console.log("Error");
+		}
+		else{
+			console.log(num3);
+			console.log('-------------------');
+		}
 });
