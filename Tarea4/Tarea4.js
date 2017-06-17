@@ -1,3 +1,5 @@
+//Tarea 4 - Hernández Juárez Carlos
+
 const async = require('async');
 //Functions
 function declaration(cb){
@@ -49,6 +51,7 @@ async.waterfall([
 });
 async.waterfall([
 	declaration2,
+	hour,
 	hour,
 	hour,
 	hour,
