@@ -41,7 +41,6 @@ function Eliminar() {
   console.log("\nEvento eliminado");
 }
 function Inicio() {
-  console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n');
   rl.on('line', (line) =>{
     if(line === '1'){
       Ver();
@@ -55,8 +54,9 @@ function Inicio() {
   	if(line === '4'){
   		process.exit(0);
   	}
-    rl.pause();
+  console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n');
   });
 }
 
+console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n');
 Inicio();
