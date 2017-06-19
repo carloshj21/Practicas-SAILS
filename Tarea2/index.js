@@ -1,7 +1,5 @@
 const readline = require('readline');
-
 var fs = require('fs');
-
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -9,29 +7,38 @@ const rl = readline.createInterface({
 });
 
 function Ver(){
-  fs.readFile('Eventos.txt', function(error, content){
+  var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
+  for (date in eventos)
+  {
+    console.log(eventos[date]);
+  }
+  /*console.log(eventos);
+  eventos.splice(2,1);
+  console.log(eventos);
+  console.log('\n\n');
+  for (date in eventos)
+  {
+    console.log(eventos[date]);
+  }*/
+  console.log("\n*Estos son todos sus Eventos*\n\n");
+  //process.exit(0);
+  /*fs.readFile('Eventos.txt', function(error, content){
     console.log(content.toString());
     console.log("\n*Estos son todos sus Eventos*\n\n")
-  });
+  });*/
 }
+//function Anadir{}
 
-function Añadir(){
-  rl.question('\n¿Nombre del Evento?:\n', (nombre) => {
-    var nom = nombre;
-    console.log(nom);
-    process.exit(0);
-  });
-}
+//Ver();
 
 function Inicio() {
   console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n');
   rl.on('line', (line) =>{
     if(line === '1'){
-      Ver();
-      //Inicio();
+      Ver(/*Inicio()*/);
     }
     if(line === '2'){
-      Añadir();
+      Anadir();
     }
     if(line === '3'){
       console.log("Eliminar evento?");
@@ -41,9 +48,28 @@ function Inicio() {
   	}
     rl.pause();
     //Inicio();
-    rl.close();
+    //rl.close();
   });
 }
 
 Inicio();
-//Añadir();
+
+
+var fechas = [];
+/*rl.question('\n¿Nombre del Evento?:\n', (nombre) => {
+  fechas.push(nombre);
+  fechas.push('.........');
+  fechas.push(':c');
+  console.log('\n');
+  for (date in fechas)
+  {
+    console.log(eventos[date]);
+  }
+  console.log('\n');
+  eventos.splice(2,1);
+  for (date in eventos)
+  {
+    console.log(eventos[date]);
+  }
+  process.exit(0);
+});*/
