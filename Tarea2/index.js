@@ -1,6 +1,7 @@
 const readline = require('readline');
 var fs = require('fs');
 var colors = require('colors');
+var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -8,7 +9,6 @@ const rl = readline.createInterface({
 });
 //Functions
 function Ver() {
-  var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
   var x = 1;
   console.log('-------------------------------------------\n'.cyan);
   for (date in eventos)
@@ -50,13 +50,15 @@ function Eliminar() {
   }
   rl.question('\nTeclee el número del evento que desea eliminar\n'.red, (ind) => {
     indice = ind-1;
-    eventos.splice(indice);
+    console.log(eventos);
+    borr = eventos.splice(indice,1);
+    console.log(borr + '\n');
     //console.log(eventos + '\n');
-    for (date in eventos)
+    var ingre = for (date in eventos)
     {
       console.log(eventos[date]);
-      fs.writeFileSync('Eventos.txt', eventos[date]);
     }
+    fs.writeFileSync('Eventos.txt', ingre);
     console.log("\nEvento eliminado".red);
     setTimeout(() => {
       console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
