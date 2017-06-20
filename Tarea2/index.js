@@ -1,23 +1,22 @@
 const readline = require('readline');
 var fs = require('fs');
 var colors = require('colors');
-var fechas = [];
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
+//Functions
 function Ver() {
   var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
   var x = 1;
-  console.log('-------------------------------------------\n');
+  console.log('-------------------------------------------\n'.cyan);
   for (date in eventos)
   {
     console.log(x + ' ' + eventos[date]);
     x++;
   }
-  console.log("\n\n*Estos son todos sus Eventos programados*\n\n");
+  console.log("\n\n*Estos son todos sus Eventos programados*\n\n".cyan);
 }
 function Anadir() {
   rl.question('\n¿Nombre del Evento?:\n'.cyan, (nombre) => {
@@ -44,13 +43,16 @@ function Eliminar() {
     console.log(x + ' ' + eventos[date]);
     x++;
   }
-  console.log("Teclee el número del evento que desea eliminar:");
-  //eventos.splice(0,1);
-  /*for (date in eventos)
-  {
-    console.log(eventos[date]);
-  }*/
-  console.log("\nEvento eliminado");
+  //console.log("Teclee el número del evento que desea eliminar:");
+  rl.question('\nTeclee el número del evento que desea eliminar\n'.red, (ind) => {
+    indice = ind-1;
+    eventos.splice(indice,1);
+    for (date in eventos)
+    {
+      fs.writeFileSync('Eventos.txt', eventos[date]);
+    }
+    console.log("\nEvento eliminado".red);
+  });
 }
 function Inicio() {
   rl.on('line', (line) =>{
@@ -70,5 +72,6 @@ function Inicio() {
   });
 }
 
+//Process
 console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
 Inicio();
