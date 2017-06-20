@@ -17,6 +17,9 @@ function Ver() {
     x++;
   }
   console.log("\n\n*Estos son todos sus Eventos programados*\n\n".cyan);
+  setTimeout(() => {
+    console.log('¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
+  },500);
 }
 function Anadir() {
   rl.question('\n¿Nombre del Evento?:\n'.cyan, (nombre) => {
@@ -29,10 +32,12 @@ function Anadir() {
         console.log('\n' + d);
         fs.appendFileSync('Eventos.txt', "\n" + d);
         console.log("\nEvento Agregado :D".cyan);
+        setTimeout(() => {
+          console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
+        },1000);
       });
     });
   });
-  //process.exit(0);
 }
 function Eliminar() {
   var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
@@ -43,15 +48,19 @@ function Eliminar() {
     console.log(x + ' ' + eventos[date]);
     x++;
   }
-  //console.log("Teclee el número del evento que desea eliminar:");
   rl.question('\nTeclee el número del evento que desea eliminar\n'.red, (ind) => {
     indice = ind-1;
-    eventos.splice(indice,1);
+    eventos.splice(indice);
+    //console.log(eventos + '\n');
     for (date in eventos)
     {
+      console.log(eventos[date]);
       fs.writeFileSync('Eventos.txt', eventos[date]);
     }
     console.log("\nEvento eliminado".red);
+    setTimeout(() => {
+      console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
+    },1000);
   });
 }
 function Inicio() {
@@ -68,10 +77,9 @@ function Inicio() {
   	if(line === '4'){
   		process.exit(0);
   	}
-    console.log('¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
   });
 }
 
 //Process
-console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
+console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n\n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
 Inicio();
