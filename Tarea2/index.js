@@ -1,7 +1,7 @@
 const readline = require('readline');
 var fs = require('fs');
 var colors = require('colors');
-var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
+var eventos = ['Cumpleanos // 21-08-2017 // 14:35', 'Examen // 20-10-2017 // 12:00', 'Proyecto // 21-06-2017 // 23:01'];
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -18,7 +18,7 @@ function Ver() {
   }
   console.log("\n\n*Estos son todos sus Eventos programados*\n\n".cyan);
   setTimeout(() => {
-    console.log('¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
+    console.log('¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
   },500);
 }
 function Anadir() {
@@ -30,17 +30,16 @@ function Anadir() {
         c = hora;
         d = a + ' // ' + b + ' // ' + c;
         console.log('\n' + d);
-        fs.appendFileSync('Eventos.txt', "\n" + d);
+        eventos.push(d);
         console.log("\nEvento Agregado :D".cyan);
         setTimeout(() => {
-          console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
+          console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
         },1000);
       });
     });
   });
 }
 function Eliminar() {
-  var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
   var x = 1;
   console.log('-------------------------------------------\n');
   for (date in eventos)
@@ -50,20 +49,24 @@ function Eliminar() {
   }
   rl.question('\nTeclee el número del evento que desea eliminar\n'.red, (ind) => {
     indice = ind-1;
-    console.log(eventos);
     borr = eventos.splice(indice,1);
-    console.log(borr + '\n');
-    //console.log(eventos + '\n');
-    var ingre = for (date in eventos)
-    {
-      console.log(eventos[date]);
-    }
-    fs.writeFileSync('Eventos.txt', ingre);
-    console.log("\nEvento eliminado".red);
+    var elievent = eventos;
+    eventos = elievent;
+    console.log("\nEvento eliminado!!".red);
     setTimeout(() => {
-      console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
+      console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
     },1000);
   });
+}
+function Ayuda() {
+  var help = fs.readFileSync('Ayuda.txt').toString();
+  console.log('\n--------------------------------------------------------------------------------'.yellow);
+  console.log(help.yellow);
+  console.log('\n--------------------------------------------------------------------------------'.yellow);
+  console.log('\n');
+  setTimeout(() => {
+    console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
+  },5000);
 }
 function Inicio() {
   rl.on('line', (line) =>{
@@ -76,12 +79,15 @@ function Inicio() {
     if(line === '3'){
       Eliminar();
     }
-  	if(line === '4'){
+    if(line === '4'){
+      Ayuda();
+    }
+  	if(line === '5'){
   		process.exit(0);
   	}
   });
 }
 
 //Process
-console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n\n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Salir \n'.green);
+console.log('\n BIENVENIDO A SU AGENDA :D,  ¿Qué desea hacer?: \n\n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
 Inicio();

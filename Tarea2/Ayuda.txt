@@ -1,0 +1,13 @@
+Ayuda...
+
+Para navegar entre las funciones de esta agenda escriba el numero que corresponde a cada opcion.
+
+
+*Agregar eventos*
+
+Escriba en cuanto se le indique el nombre del evento.
+Despues escriba la fecha del evento con el siguiente formato: dia-mes-anio (ej. 21-08-2017).
+Finalmente escriba la hora del evento, con el formato de 24 horas: (ejs. 05:00, 15:00, 23:30).
+
+
+Disfrute se agenda!! :D
