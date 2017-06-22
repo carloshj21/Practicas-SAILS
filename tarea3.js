@@ -1,8 +1,11 @@
 const readline = require('readline');
+var colors = require('colors');
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
+var arre = [];
 //Classes
 class Pastel{
 	constructor(nombre, sabor, color, tamanio){
@@ -14,23 +17,34 @@ class Pastel{
 }
 
 new Promise((resolve, reject) => {
-  console.log('\n¿Quiere un pastel?:  S/N\n');
+  console.log('\n¿Quiere un pastel?:  S/N\n'.yellow);
   rl.on('line', (line) =>{
     if(line == 'S' || line == 's')
     {
-      rl.question('\n¿Nombre del Pastel?:\n', (nombre) => {
+      rl.question('\n¿Nombre del Pastel?:\n'.yellow, (nombre) => {
         a = nombre;
-        rl.question('\n¿Sabor del pastel?\n', (sabor) => {
+        rl.question('\n¿Sabor del pastel?\n'.yellow, (sabor) => {
           b = sabor;
-          rl.question('\n¿Color del pastel?\n', (color) => {
+          rl.question('\n¿Color del pastel?\n'.yellow, (color) => {
             c = color;
-            rl.question('\n¿Tamanio del pastel?\n', (tamanio) => {
+            rl.question('\n¿Tamanio del pastel?\n'.yellow, (tamanio) => {
               d = tamanio;
-              e = a + ' // ' + b + ' // ' + c + ' // ' + d;
-              console.log('\n' + e);
-              console.log("\nEvento Agregado :D");
+              let pas = new Pastel(a,b,c,d);
+              //console.log(pas);
+              //console.log('\n\n\n');
+              arre.push(pas);
+              //console.log('\n\n\n');
+              //console.log(arre.length);
+              //console.log('\n\n\n');
+              /*for (ele in arre)
+              {
+                console.log(arre[ele]);
+                console.log('\n');
+              }
+              console.log('\n\n\n');*/
+              console.log("\n\nPastel Horneado :P\n".cyan);
               setTimeout(() => {
-                console.log('\n¿Quiere otro pastel?:  S/N\n');
+                console.log('\n¿Quiere otro pastel?:  S/N\n'.yellow);
               },1000);
             });
           });
@@ -39,9 +53,20 @@ new Promise((resolve, reject) => {
     }
     if(line == 'N' || line == 'n')
     {
-      console.log("No :c");
+      console.log(arre.length);
+      console.log('\n\n\n');
+      for (ele in arre)
+      {
+        console.log(arre[ele]);
+        console.log('\n');
+      }
+      console.log('\n\n\n');
+      setTimeout(() => {
+        process.exit(0);
+        //console.log('\n¿Quiere otro pastel?:  S/N\n'.yellow);
+      },2000);
     }
-    return resolve(line);
+    //return resolve(line);
   });
 })
 .catch((err) => {
