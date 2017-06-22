@@ -11,33 +11,39 @@ class Pastel{
     this.color = color;
     this.tamanio = tamanio;
 	}
-	/*ladrar(ladrido = 'Woof'){
-		console.log(arguments);
-		console.log(this.nombre, '-', ladrido);
-	}*/
 }
 
-do {
-  new Promise((resolve, reject) => {
-    rl.question('\n¿Quiere un pastel?:  S/N\n', (decision) => {
-      return resolve(decision);
-    })
-    .then((resolve) =>{
-      if(resolve == 'S' || resolve == 's')
-      {
-        console.log("Si :D");
-      }
-      if(resolve == 'N' || resolve == 'n')
-      {
-        console.log("No :c");
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  })
-}
-while (decision != 'N' || decison != 'n');
-/*.catch((err) => {
+new Promise((resolve, reject) => {
+  console.log('\n¿Quiere un pastel?:  S/N\n');
+  rl.on('line', (line) =>{
+    if(line == 'S' || line == 's')
+    {
+      rl.question('\n¿Nombre del Pastel?:\n', (nombre) => {
+        a = nombre;
+        rl.question('\n¿Sabor del pastel?\n', (sabor) => {
+          b = sabor;
+          rl.question('\n¿Color del pastel?\n', (color) => {
+            c = color;
+            rl.question('\n¿Tamanio del pastel?\n', (tamanio) => {
+              d = tamanio;
+              e = a + ' // ' + b + ' // ' + c + ' // ' + d;
+              console.log('\n' + e);
+              console.log("\nEvento Agregado :D");
+              setTimeout(() => {
+                console.log('\n¿Quiere otro pastel?:  S/N\n');
+              },1000);
+            });
+          });
+        });
+      });
+    }
+    if(line == 'N' || line == 'n')
+    {
+      console.log("No :c");
+    }
+    return resolve(line);
+  });
+})
+.catch((err) => {
   console.log(err);
-});*/
+});
