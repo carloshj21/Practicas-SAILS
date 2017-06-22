@@ -4,8 +4,8 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
 var arre = [];
+
 //Classes
 class Pastel{
 	constructor(nombre, sabor, color, tamanio){
@@ -15,9 +15,17 @@ class Pastel{
     this.tamanio = tamanio;
 	}
 }
-
+class Adicional{
+	constructor(nombre = 'Curso', sabor = 'imposible', color = 'rojo sangre', tamanio = 'muy grande'){
+		this.nombre = nombre;
+		this.sabor = sabor;
+    this.color = color;
+    this.tamanio = tamanio;
+	}
+}
+//Process
 new Promise((resolve, reject) => {
-  console.log('\n¿Quiere un pastel?:  S/N\n'.yellow);
+  console.log('\n¿Quiere un pastel?:  S/N\n'.green);
   rl.on('line', (line) =>{
     if(line == 'S' || line == 's')
     {
@@ -30,21 +38,10 @@ new Promise((resolve, reject) => {
             rl.question('\n¿Tamanio del pastel?\n'.yellow, (tamanio) => {
               d = tamanio;
               let pas = new Pastel(a,b,c,d);
-              //console.log(pas);
-              //console.log('\n\n\n');
               arre.push(pas);
-              //console.log('\n\n\n');
-              //console.log(arre.length);
-              //console.log('\n\n\n');
-              /*for (ele in arre)
-              {
-                console.log(arre[ele]);
-                console.log('\n');
-              }
-              console.log('\n\n\n');*/
-              console.log("\n\nPastel Horneado :P\n".cyan);
+              console.log('\n');
               setTimeout(() => {
-                console.log('\n¿Quiere otro pastel?:  S/N\n'.yellow);
+                console.log('\n¿Quiere otro pastel?:  S/N\n'.green);
               },1000);
             });
           });
@@ -53,20 +50,42 @@ new Promise((resolve, reject) => {
     }
     if(line == 'N' || line == 'n')
     {
-      console.log(arre.length);
-      console.log('\n\n\n');
-      for (ele in arre)
-      {
-        console.log(arre[ele]);
-        console.log('\n');
+      var l = arre.length;
+      console.log('\nOrden en proceso...\n'.cyan);
+      if(l%2 == 0) {
+        var otro = new Adicional();
+        arre.push(otro);
+        console.log('\n---------------------------------------------------------\n\nAquí tiene sus pasteles, más uno de regalo!!\n'.cyan);
+        setTimeout(() => {
+          for (ele in arre)
+          {
+            console.log(arre[ele]);
+            console.log('\n\n');
+          }
+        },500);
       }
-      console.log('\n\n\n');
+      if(l%3 == 0) {
+        setTimeout(() => {
+          console.log("\nOrden no aceptada. Orden es múltiplo de 3!!!\n\n".red);
+        },2000);
+      }
+      if(l%2 !=0 && l%3 != 0) {
+        console.log('\n---------------------------------------------------------\n\nAquí tiene sus pasteles!!\n'.cyan);
+        setTimeout(() => {
+          for (ele in arre)
+          {
+            console.log(arre[ele]);
+            console.log('\n\n');
+          }
+        },500);
+      }
+      setTimeout(() => {
+        console.log('Vuelva pronto!! :D'.magenta);
+      },2000);
       setTimeout(() => {
         process.exit(0);
-        //console.log('\n¿Quiere otro pastel?:  S/N\n'.yellow);
-      },2000);
+      },4000);
     }
-    //return resolve(line);
   });
 })
 .catch((err) => {
