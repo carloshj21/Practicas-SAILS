@@ -1,7 +1,6 @@
 const readline = require('readline');
 var fs = require('fs');
 var colors = require('colors');
-var eventos = ['Cumpleanos // 21-08-2017 // 14:35', 'Examen // 20-10-2017 // 12:00', 'Proyecto // 21-06-2017 // 23:01'];
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -9,6 +8,7 @@ const rl = readline.createInterface({
 });
 //Functions
 function Ver() {
+  var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
   var x = 1;
   console.log('-------------------------------------------\n'.cyan);
   for (date in eventos)
@@ -18,7 +18,7 @@ function Ver() {
   }
   console.log("\n\n*Estos son todos sus Eventos programados*\n\n".cyan);
   setTimeout(() => {
-    console.log('¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
+    console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
   },500);
 }
 function Anadir() {
@@ -30,7 +30,7 @@ function Anadir() {
         c = hora;
         d = a + ' // ' + b + ' // ' + c;
         console.log('\n' + d);
-        eventos.push(d);
+        fs.appendFileSync('Eventos.txt', "\n" + d);
         console.log("\nEvento Agregado :D".cyan);
         setTimeout(() => {
           console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
@@ -40,6 +40,7 @@ function Anadir() {
   });
 }
 function Eliminar() {
+  var eventos = fs.readFileSync('Eventos.txt').toString().split('\n');
   var x = 1;
   console.log('-------------------------------------------\n');
   for (date in eventos)
@@ -49,10 +50,17 @@ function Eliminar() {
   }
   rl.question('\nTeclee el número del evento que desea eliminar\n'.red, (ind) => {
     indice = ind-1;
-    borr = eventos.splice(indice,1);
-    var elievent = eventos;
-    eventos = elievent;
-    console.log("\nEvento eliminado!!".red);
+    eventos.splice(indice,1);
+    console.log(eventos.length);
+    console.log('\n');
+    //console.log(eventos + '\n');
+    //fs.unlink('Eventos.txt');
+    for (date in eventos)
+    {
+      console.log(eventos[date]);
+      fs.appendFileSync('Eventos.txt', eventos[date]);
+    }
+    console.log("\nEvento eliminado".red);
     setTimeout(() => {
       console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
     },1000);
