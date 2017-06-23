@@ -54,11 +54,12 @@ function Eliminar() {
     console.log(eventos.length);
     console.log('\n');
     //console.log(eventos + '\n');
-    //fs.unlink('Eventos.txt');
+    fs.unlink('Eventos.txt');
+    fs.write('Eventos.txt', '');
     for (date in eventos)
     {
       console.log(eventos[date]);
-      fs.appendFileSync('Eventos.txt', eventos[date]);
+      fs.appendFileSync('Eventos.txt', '\n'+eventos[date]);
     }
     console.log("\nEvento eliminado".red);
     setTimeout(() => {
