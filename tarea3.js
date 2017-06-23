@@ -24,9 +24,9 @@ class Adicional{
 	}
 }
 //Process
-new Promise((resolve, reject) => {
-  console.log('\n¿Quiere un pastel?:  S/N\n'.green);
-  rl.on('line', (line) =>{
+console.log('\n¿Quiere un pastel?:  S/N\n'.green);
+rl.on('line', (line) =>{
+  new Promise((resolve, reject) => {
     if(line == 'S' || line == 's')
     {
       rl.question('\n¿Nombre del Pastel?:\n'.yellow, (nombre) => {
@@ -86,8 +86,7 @@ new Promise((resolve, reject) => {
         process.exit(0);
       },4000);
     }
+  }).catch((err) => {
+    console.log(err);
   });
-})
-.catch((err) => {
-  console.log(err);
 });
