@@ -51,17 +51,30 @@ function Eliminar() {
   rl.question('\nTeclee el número del evento que desea eliminar\n'.red, (ind) => {
     indice = ind-1;
     eventos.splice(indice,1);
-    console.log(eventos.length);
-    console.log('\n');
+    /*setTimeout(() => {
+      fs.unlink('Eventos.txt');
+    },200);*/
     //console.log(eventos + '\n');
-    fs.unlink('Eventos.txt');
-    fs.write('Eventos.txt', '');
-    for (date in eventos)
-    {
-      console.log(eventos[date]);
-      fs.appendFileSync('Eventos.txt', '\n'+eventos[date]);
-    }
-    console.log("\nEvento eliminado".red);
+    setTimeout(() => {
+      fs.writeFile('Eventos.txt', '', function (err) {
+        if (err) throw err;
+      });
+    },200);
+    /*setTimeout(() => {
+      console.log(eventos);
+    },200);*/
+    setTimeout(() => {
+      long = eventos.length;
+      long2 = long-1;
+      console.log(long2);
+      for (i=0; i<long2; i++)
+      {
+        console.log(eventos[i]);
+        fs.appendFileSync('Eventos.txt', eventos[i] + '\n');
+      }
+      fs.appendFileSync('Eventos.txt', eventos[long2]);
+      console.log("\nEvento eliminado".red);
+    },200);
     setTimeout(() => {
       console.log('\n¿Qué desea hacer?: \n 1) Ver eventos \n 2) Añadir evento \n 3) Eliminar evento \n 4) Ayuda \n 5) Salir \n'.green);
     },1000);
