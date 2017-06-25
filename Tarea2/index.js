@@ -51,18 +51,11 @@ function Eliminar() {
   rl.question('\nTeclee el número del evento que desea eliminar\n'.red, (ind) => {
     indice = ind-1;
     eventos.splice(indice,1);
-    /*setTimeout(() => {
-      fs.unlink('Eventos.txt');
-    },200);*/
-    //console.log(eventos + '\n');
     setTimeout(() => {
       fs.writeFile('Eventos.txt', '', function (err) {
         if (err) throw err;
       });
     },200);
-    /*setTimeout(() => {
-      console.log(eventos);
-    },200);*/
     setTimeout(() => {
       long = eventos.length;
       long2 = long-1;
