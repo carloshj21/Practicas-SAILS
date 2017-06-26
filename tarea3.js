@@ -1,9 +1,11 @@
 const readline = require('readline');
 var colors = require('colors');
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
 var arre = [];
 
 //Classes
@@ -24,52 +26,57 @@ class Adicional{
 	}
 }
 //Process
-//new Promise((resolve, reject) => {
-  console.log('\n¿Quiere un pastel?:  S/N\n'.green);
-  rl.on('line', (line) =>{
-    if(line == 'S' || line == 's')
-    {
-      new Promise((resolve, reject) => {
-        rl.question('\n¿Nombre del Pastel?:\n'.yellow, (nombre) => {
-          a = nombre;
-          return resolve (a);
-        });
-      }).then((a) =>{
-      return  new Promise((resolve, reject) => {
-          return rl.question('\n¿Sabor del pastel?\n'.yellow, (sabor) => {
-            a = a;
-            b = sabor;
-            return resolve([a, b]);
-          });
+console.log('\n¿Quiere un pastel?:  S/N\n'.green);
+rl.on('line', (line) =>{
+  if(line == 'S' || line == 's')
+  {
+    new Promise((resolve, reject) => {
+      rl.question('\n¿Nombre del Pastel?:\n'.yellow, (nombre) => {
+        a = nombre;
+        return resolve (a);
       });
-      }).then(([a,b]) => {
-        console.log(a);
-      }).catch((err) => {
+    }).then((a) =>{
+    return  new Promise((resolve, reject) => {
+        return rl.question('\n¿Sabor del pastel?\n'.yellow, (sabor) => {
+          a = a;
+          b = sabor;
+          return resolve([a, b]);
+        });
+    });
+    }).then(([a,b]) => {
+    return  new Promise((resolve, reject) => {
+        return rl.question('\n¿Color del pastel?\n'.yellow, (color) => {
+          a = a;
+          b = b;
+          c = color;
+          return resolve([a, b, c]);
+        });
+    });
+    }).then(([a, b, c]) =>{
+    return  new Promise((resolve, reject) => {
+      return rl.question('\n¿Tamanio del pastel?\n'.yellow, (tamanio) => {
+        a = a;
+        b = b;
+        c = c;
+        d = tamanio;
+        return resolve([a, b, c, d]);
+      });
+    });
+    }).then(([a, b, c, d]) =>{
+      let pas = new Pastel(a,b,c,d);
+      arre.push(pas);
+      console.log('\n');
+    }).then(() =>{
+        console.log('\n¿Quiere otro pastel?:  S/N\n'.green);
+    }).catch((err) => {
         console.log(err);
       });
-      /*rl.question('\n¿Nombre del Pastel?:\n'.yellow, (nombre) => {
-        a = nombre;
-        rl.question('\n¿Sabor del pastel?\n'.yellow, (sabor) => {
-          b = sabor;
-          rl.question('\n¿Color del pastel?\n'.yellow, (color) => {
-            c = color;
-            rl.question('\n¿Tamanio del pastel?\n'.yellow, (tamanio) => {
-              d = tamanio;
-              let pas = new Pastel(a,b,c,d);
-              arre.push(pas);
-              console.log('\n');
-              setTimeout(() => {
-                console.log('\n¿Quiere otro pastel?:  S/N\n'.green);
-              },1000);
-            });
-          });
-        });
-      });*/
-    }
-    if(line == 'N' || line == 'n')
-    {
-      var l = arre.length;
-      console.log('\nOrden en proceso...\n'.cyan);
+  }
+  if(line == 'N' || line == 'n')
+  {
+    var l = arre.length;
+    console.log('\nOrden en proceso...\n'.cyan);
+    new Promise((resolve, reject) => {
       if(l%2 == 0 && l!=0) {
         var otro = new Adicional();
         arre.push(otro);
@@ -102,14 +109,17 @@ class Adicional{
           console.log("\nNo ha hecho pedido alguno!!\n\n".red);
         },2000);
       }
+      return resolve ("Ya no quiere pasteles");
+    }).then(() =>{
       setTimeout(() => {
         console.log('Vuelva pronto!! :D'.magenta);
       },2000);
+    }).then(() =>{
       setTimeout(() => {
         process.exit(0);
       },4000);
-    }
-  });
-/*}).catch((err) => {
-  console.log(err);
-});*/
+    }).catch((err) => {
+        console.log(err);
+      });
+  }
+});
