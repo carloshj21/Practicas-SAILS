@@ -24,12 +24,28 @@ class Adicional{
 	}
 }
 //Process
-console.log('\n¿Quiere un pastel?:  S/N\n'.green);
-rl.on('line', (line) =>{
-  new Promise((resolve, reject) => {
+new Promise((resolve, reject) => {
+  console.log('\n¿Quiere un pastel?:  S/N\n'.green);
+  rl.on('line', (line) =>{
     if(line == 'S' || line == 's')
     {
-      rl.question('\n¿Nombre del Pastel?:\n'.yellow, (nombre) => {
+      new Promise((resolve, reject) => {
+        rl.question('\n¿Nombre del Pastel?:\n'.yellow, (nombre) => {
+          a = nombre;
+          return resolve (a);
+        });
+      }).then((resolve) =>{
+        rl.question('\n¿Sabor del pastel?\n'.yellow, (sabor) => {
+          //a = resolve;
+          b = sabor;
+          return sabor;
+        });
+        console.log(sabor);
+        console.log('\n' + resolve);
+      }).catch((err) => {
+        console.log(err);
+      });
+      /*rl.question('\n¿Nombre del Pastel?:\n'.yellow, (nombre) => {
         a = nombre;
         rl.question('\n¿Sabor del pastel?\n'.yellow, (sabor) => {
           b = sabor;
@@ -46,13 +62,13 @@ rl.on('line', (line) =>{
             });
           });
         });
-      });
+      });*/
     }
     if(line == 'N' || line == 'n')
     {
       var l = arre.length;
       console.log('\nOrden en proceso...\n'.cyan);
-      if(l%2 == 0) {
+      if(l%2 == 0 && l!=0) {
         var otro = new Adicional();
         arre.push(otro);
         console.log('\n---------------------------------------------------------\n\nAquí tiene sus pasteles, más uno de regalo!!\n'.cyan);
@@ -64,12 +80,12 @@ rl.on('line', (line) =>{
           }
         },500);
       }
-      if(l%3 == 0) {
+      if(l%3 == 0 && l!=0) {
         setTimeout(() => {
           console.log("\nOrden no aceptada. Orden es múltiplo de 3!!!\n\n".red);
         },2000);
       }
-      if(l%2 !=0 && l%3 != 0) {
+      if(l%2 !=0 && l%3 != 0 && l!=0) {
         console.log('\n---------------------------------------------------------\n\nAquí tiene sus pasteles!!\n'.cyan);
         setTimeout(() => {
           for (ele in arre)
@@ -79,6 +95,11 @@ rl.on('line', (line) =>{
           }
         },500);
       }
+      if(l == 0) {
+        setTimeout(() => {
+          console.log("\nNo ha hecho pedido alguno!!\n\n".red);
+        },2000);
+      }
       setTimeout(() => {
         console.log('Vuelva pronto!! :D'.magenta);
       },2000);
@@ -86,7 +107,7 @@ rl.on('line', (line) =>{
         process.exit(0);
       },4000);
     }
-  }).catch((err) => {
-    console.log(err);
   });
+}).catch((err) => {
+  console.log(err);
 });
