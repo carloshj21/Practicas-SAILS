@@ -59,10 +59,8 @@ function Eliminar() {
     setTimeout(() => {
       long = eventos.length;
       long2 = long-1;
-      console.log(long2);
       for (i=0; i<long2; i++)
       {
-        console.log(eventos[i]);
         fs.appendFileSync('Eventos.txt', eventos[i] + '\n');
       }
       fs.appendFileSync('Eventos.txt', eventos[long2]);
