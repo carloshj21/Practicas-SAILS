@@ -1,3 +1,5 @@
+//Tarea 2 - Hernández Juárez Carlos
+
 const readline = require('readline');
 var fs = require('fs');
 var colors = require('colors');
