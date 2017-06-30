@@ -19,4 +19,4 @@ Se deberá entrar a la carpeta del repositorio y hacer lo siguiente dependiendo 
 * Tarea 2: Entrar a la carpeta "Tarea2", escribir en consola: "node ."
 * Tarea 3: Escribir en consola: "node tarea3.js"
 * Tarea 4: Entrar a la carpeta "Tarea4", escribir en consola: "node ."
-* Tarea 5: Entrar a la carpeta "Tarea4", escribir en consola: "node ."
+* Tarea 5: Entrar a la carpeta "Tarea5", escribir en consola: "node ."
