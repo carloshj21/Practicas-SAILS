@@ -9,3 +9,15 @@
 *  Tarea 7 : Controllers con waterfall y promesas
 *  Tarea 8 : Update Usuarios --> Modelo Vista Controlador (MVC)
 *  Tarea 9 : Middleware que imprima mediante sails.log.info los detalles de cada petición.
+- [ ] Hola
+
+
+### ¿Cómo ejecutar las tareas?
+
+Se deberá entrar a la carpeta del repositorio y hacer lo siguiente dependiendo de qué tarea se quiera ejecutar:
+
+* Tarea 1:  desde consola escribir: "node tarea1.js"
+* Tarea 2: Entrar a la carpeta "Tarea2", escribir en consola: "node ."
+* Tarea 3: Escribir en consola: "node tarea3.js"
+* Tarea 4: Entrar a la carpeta "Tarea4", escribir en consola: "node ."
+* Tarea 5: Entrar a la carpeta "Tarea4", escribir en consola: "node ."
