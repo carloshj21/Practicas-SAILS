@@ -13,6 +13,8 @@
 
 ### ¿Cómo ejecutar las tareas?
 
+Para la tarea 7, es necesario MySQL y crear una base de datos con nombre: _curso_
+
 Se deberá entrar a la carpeta del repositorio y hacer lo siguiente dependiendo de qué tarea se quiera ejecutar:
 
 * Tarea 1:  desde consola escribir: "node tarea1.js"
