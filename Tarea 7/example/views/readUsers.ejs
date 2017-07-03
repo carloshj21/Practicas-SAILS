@@ -1,0 +1,14 @@
+<link rel='stylesheet' type='text/css' href='/styles/user.css'/>
+<%- partial('common/navbar.ejs')%>
+<% for(user of users){ %>
+  <strong class='id'><%= user.id %></strong>
+  <ul>
+    <li class='name'>
+      <strong><%= user.nombre %></strong>
+    </li>
+    <li>
+      <%= user.edad %>
+    </li>
+  </ul>
+  <br/><br/>
+<% } %>
