@@ -1,0 +1,33 @@
+.content{
+  margin: 7%;
+}
+.ctext{
+  padding: 10%;
+  background-color: lightblue;
+}
+h3{
+  color:crimson;
+}
+.id
+{
+  color:red;
+}
+.name
+{
+  color:navy;
+}
+
+nav
+{
+  background-color: navy;
+  color: white;
+}
+td{
+  width: 50%;
+  border:2px solid green;
+  text-align: center;
+}
+.important{
+  background-color: navy;
+  color: white;
+}
