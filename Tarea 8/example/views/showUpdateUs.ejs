@@ -1,0 +1,56 @@
+<%= user.id %>
+<%= user.nombre %>
+<%= user.edad %>
+<%= user.password %>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href='/styles/materialize/css/materialize.min.css'  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper #0d47a1 blue darken-4">
+      <a href="/Home" class="brand-logo">Tarea 8: Curso SAILS</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href='/create'>Crear Usuario</a></li>
+        <li><a href='/readUsers'>Leer todos los Usuarios</a></li>
+        <li><a href='/update'>Actualizar información de Usuario</a></li>
+      </ul>
+    </div>
+  </nav>
+  <br/><br/>
+  <center>
+    <h3 style="color: crimson;">Actualizar Usuario</h3>
+  </center>
+  <div class='formu'>
+    <div class="row">
+      <form class="col s12" id="formu">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="nom" value=<%= user.nombre %> required>
+            <label>Nombre de Usuario</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="number" id="age" value=<%= user.edad %> required>
+            <label>Edad</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input disabled type="password" id="cont" value=<%= user.password %> required>
+            <label>Contraseña</label>
+          </div>
+        </div>
+        <center>
+          <button class="btn waves-effect waves-light #0d47a1 blue darken-4" type="submit" name="action">Crear Usuario
+            <i class="material-icons right">send</i>
+          </button>
+        </center>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src='/styles/materialize/js/materialize.min.js'></script>
+</body>
