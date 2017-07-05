@@ -25,4 +25,4 @@ Se deberá entrar a la carpeta del repositorio y hacer lo siguiente dependiendo 
 * Tarea 7: Los controladores se pueden ejecutar de la siguiente manera:
   * createUserWt y createUserProm desde _postman_ con el método GET y escribiendo en el body un json con los parámetros _nombre, password,      edad_
   * readUsersProm se puede ejecutar desde el navegador escribiendo _localhost:1337/readUsersProm_
-* Tarea 8: Para ver lo hecho en la Tarea 8, escribir en el navegador _loclahost:1337/Home_ y ya de ahí podrá navegar entre los diferentes     links.
+* Tarea 8: Para ver lo hecho en la Tarea 8, escribir en el navegador _localhost:1337/Home_ y ya de ahí podrá navegar entre los diferentes     links.
